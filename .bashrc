@@ -222,10 +222,10 @@ ftext ()
 
 # opens a file
 # source : https://bobaekang.com/blog/using-open-command-in-wsl/
-# open ()
-# {
-#        Explorer.exe "$(wslpath -w $1)"
-#}
+open ()
+{
+        Explorer.exe "$(wslpath -w $1)"
+}
 
 # Copy file with a progress bar
 cpp()
