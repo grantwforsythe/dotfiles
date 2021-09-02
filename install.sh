@@ -29,7 +29,7 @@ dotfiledir=${homedir}/dotfiles
 bundle=${homedir}/.vim/bundle
 
 # list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc vimrc tmux.config gitconfig"
+files="bash_profile bashrc vimrc.tmux.conf gitconfig"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -43,9 +43,9 @@ for file in ${files}; do
     ln -sf ${dotfiledir}/.${file} ${homedir}/.${file}
 done
 
-# source tmux config
-echo "Sourcing tmux config..."
-tmux source-file ${homedir}/.tmux.config
+# source.tmux.conf
+echo "Sourcing.tmux.conf..."
+tmux source-file ${homedir}/.tmux.conf
 echo "...finished sourcing"
 
 # installing vim plugins
