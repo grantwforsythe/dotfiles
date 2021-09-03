@@ -183,8 +183,16 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 # Functions
 #######################################################
 
+# Get the Branch from a Git repo
+gitrepo() {
+    repo=$(git branch 2> /dev/null | gawk 'NF==2 {print $2}')
+    if [ -n "$repo" ]; then
+        echo " ($repo)"
+    fi
+}
+
 # Extracts any archive(s) (if unp isn't installed)
-extract () {
+extract() {
         for archive in $*; do
                 if [ -f $archive ] ; then
                         case $archive in
@@ -208,7 +216,7 @@ extract () {
 }
 
 # Searches for text in all files in the current folder
-ftext ()
+ftext()
 {
         # -i case-insensitive
         # -I ignore binary files
@@ -249,7 +257,7 @@ cpp()
 }
 
 # Copy and go to the directory
-cpg ()
+cpg()
 {
         if [ -d "$2" ];then
                 cp $1 $2 && cd $2
@@ -259,7 +267,7 @@ cpg ()
 }
 
 # Move and go to the directory
-mvg ()
+mvg()
 {
         if [ -d "$2" ];then
                 mv $1 $2 && cd $2
@@ -269,14 +277,14 @@ mvg ()
 }
 
 # Create and go to the directory
-mkdirg ()
+mkdirg()
 {
         mkdir -p $1
         cd $1
 }
 
 # Goes up a specified number of directories  (i.e. up 4)
-up ()
+up()
 {
         local d=""
         limit=$1
@@ -292,7 +300,7 @@ up ()
 }
 
 # Show the current distribution
-distribution ()
+distribution()
 {
         local dtype
         # Assume unknown
@@ -333,7 +341,7 @@ distribution ()
 }
 
 # Show the current version of the operating system
-ver ()
+ver()
 {
         local dtype
         dtype=$(distribution)
@@ -442,7 +450,7 @@ function __setprompt
         fi
 
         # Current directory
-        PS1+="\[${DARKGRAY}\]\h\[${BROWN}\]"
+        PS1+="\[${DARKGRAY}\]\h\[${BROWN}\]\$(gitrepo)"
 
         if [[ $EUID -ne 0 ]]; then
                 PS1+=" \[${YELLOW}\]$\[${NOCOLOR}\] " # Normal user
