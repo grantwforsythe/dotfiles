@@ -102,6 +102,7 @@ alias gl='git log --pretty=oneline --abbrev-commit --graph'
 
 # Change directory aliases
 alias home='cd ~'
+alias desktop='cd /mnt/c/Users/grant/Desktop'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
