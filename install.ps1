@@ -81,6 +81,8 @@ Install-PackageIfMissing "Neovim.Neovim"
 Write-Host "Installing zig with winget takes a while, please be patient..."
 Install-PackageIfMissing "zig.zig" # Required C compiler for neovim
 
+Install-PackageIfMissing "Schniz.fnm"
+
 # Git
 Install-PackageIfMissing "Git.Git"
 Install-PackageIfMissing "JesseDuffield.lazygit"

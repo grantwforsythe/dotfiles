@@ -7,6 +7,8 @@ Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$LOCALAPPDATA\starship\starship.toml"
 $ENV:STARSHIP_CACHE = "$APPDATA\Temp"
 
+fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Set-Alias -Name cd -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name cdi -Value __zoxide_zi -Option AllScope -Scope Global -Force
@@ -17,7 +19,7 @@ Set-PSReadLineOption -EditMode Vi -ViModeIndicator Cursor
 Set-PSReadLineOption -ShowToolTips
 
 # Key bindings
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete # Enhanced auto-completion
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
